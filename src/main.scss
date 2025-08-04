@@ -6,12 +6,12 @@ html, body{
   margin: 0 auto; 
   height: 100%;
   // max-width: 1440px;
-  border: 1px solid goldenrod;
+  border: 1px solid darkgreen;
 }
 
 #root {
-    display: flex;
-    flex-direction: column;
-    min-height: 100%;
+  display: flex;
+  flex-direction: column;
+  height: 100%;
 }
 

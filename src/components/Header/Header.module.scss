@@ -3,9 +3,26 @@
 
 .header {
     @include dimension($width: 100%, $height: 91px);
+    @include flex($justifyContent: start);
+    padding-left: 28px;
     background-color: $font-text-color;
 }
 
-// .nav {
+.linkLogo {
+    @include flex();
+    gap: 10.5px;
+}
 
-// }
+.nav {
+    @include dimension($width: 100%);
+    @include textStyle(
+        $fontWeight: 500,
+        $fontSize: 1.5rem,
+        $color: $font-first-color
+    );
+    @include flex($justifyContent: space-around)
+}
+
+.active {
+    color: $font-fourth-color;
+}

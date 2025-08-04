@@ -14,7 +14,10 @@
     color: $color;
 }
 
-@mixin dimension($width: auto, $height: auto) {
+@mixin dimension(
+    $width: auto,
+    $height: auto
+) {
   width: $width;
   height: $height;
 }

@@ -1,0 +1,21 @@
+@use '../../sass/abstracts/variables' as *;
+@use '../../sass/abstracts/mixins' as *;
+
+.aside {
+    @include dimension($width: 117px, $height: 100%);
+    background-color: $font-text-color;
+    @include flex($justifyContent: start, $alignItems: center, $orientation: column);
+    color: white;
+    position: relative;
+    // border: 2px solid red;
+}
+
+
+.copyright{
+    position: absolute;
+    top: 827px;
+    @include textStyle($fontWeight: 500, $fontSize: 0.875rem, $color: #fff);
+	width: max-content; //le contenu ne sera pas renvoyé à la ligne
+	transform: rotate(-90deg);
+
+}

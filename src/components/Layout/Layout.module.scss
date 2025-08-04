@@ -1,0 +1,19 @@
+@use '../../sass/abstracts/variables' as *;
+@use '../../sass/abstracts/mixins' as *;
+
+.layout {
+    @include dimension($height: 100%);
+    display: flex;
+    flex-direction: column;
+}
+
+.mainContainer {
+    @include dimension($height: 100%);
+    display: flex;
+    flex: 1;
+}
+
+.content {
+    flex: 1;
+    overflow-y: auto;
+}
