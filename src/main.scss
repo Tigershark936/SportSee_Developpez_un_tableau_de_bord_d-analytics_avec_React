@@ -1,0 +1,17 @@
+@use './sass/base/reset';
+@use './sass/abstracts/variables' as *;
+@use './sass/abstracts/mixins' as *;
+
+html, body{
+  margin: 0 auto; 
+  height: 100%;
+  // max-width: 1440px;
+  border: 1px solid goldenrod;
+}
+
+#root {
+    display: flex;
+    flex-direction: column;
+    min-height: 100%;
+}
+

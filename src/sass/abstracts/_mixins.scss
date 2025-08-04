@@ -1,0 +1,48 @@
+@use '../../sass/abstracts/variables' as *;
+
+@mixin textStyle(
+    $fontWeight:400,
+    $fontStyle: normal,
+    $fontSize: 1rem,
+    $fontFamily: $font-text,
+    $color: rgba(0, 0, 0, 1)
+) {
+    font-weight: $fontWeight;
+    font-style: $fontStyle;
+    font-size: $fontSize;
+    font-family: $fontFamily;
+    color: $color;
+}
+
+@mixin dimension($width: auto, $height: auto) {
+  width: $width;
+  height: $height;
+}
+
+@mixin flex(
+  $justifyContent: center,
+  $alignItems: center,
+  $orientation: row
+) {
+  display: flex;
+  justify-content: $justifyContent;
+  align-items: $alignItems;
+  flex-direction: $orientation;
+}
+
+@mixin margin($values...) {
+  margin: $values;
+}
+
+@mixin padding($values...) {
+  padding: $values;
+}
+
+@mixin border($borderRadius: 0, $border: none) {
+    border-radius: $borderRadius;
+    border: $border;
+}
+
+@mixin shadow($shadows: none) {
+    box-shadow: $shadows;
+}
