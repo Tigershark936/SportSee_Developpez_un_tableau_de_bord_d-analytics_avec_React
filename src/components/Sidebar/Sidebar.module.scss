@@ -4,18 +4,24 @@
 .aside {
     @include dimension($width: 117px, $height: 100%);
     background-color: $font-text-color;
-    @include flex($justifyContent: start, $alignItems: center, $orientation: column);
-    color: white;
-    position: relative;
+    @include flex($justifyContent: end, $orientation: column);
     // border: 2px solid red;
+    padding: 3rem 0;
 }
 
+.sidebarbutton {
+    flex: 1; 
+    @include flex($orientation: column);
+    gap: 20px;
+    // border: 1px solid gold;
 
-.copyright{
-    position: absolute;
-    top: 827px;
+    @media (max-width: 1024px) {
+        gap: 15px;
+    }
+}
+
+.copyright {
+    writing-mode: vertical-rl;
+    transform: rotate(180deg);
     @include textStyle($fontWeight: 500, $fontSize: 0.875rem, $color: #fff);
-	width: max-content; //le contenu ne sera pas renvoyé à la ligne
-	transform: rotate(-90deg);
-
 }

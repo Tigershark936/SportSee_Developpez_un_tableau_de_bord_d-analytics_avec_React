@@ -2,13 +2,14 @@
 @use '../../sass/abstracts/mixins' as *;
 
 .button {
-    position: relative;
-    top: 256px;
 	@include dimension($width: 64px, $height: 64px);
     @include flex($alignItems: center);
-    @include margin(20px);
 	@include border($borderRadius: 6px);
 	background-color: #fff;
+
+    @media (max-width: 1024px) {  
+    @include dimension($width: 48px, $height: 48px);
+  }
 }
 
 .buttonlogo {
