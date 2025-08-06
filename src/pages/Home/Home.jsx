@@ -1,12 +1,19 @@
-// import styles from './Home.module.scss';
+import { Link } from 'react-router-dom';
+import styles from './Home.module.scss';
 import Header from '../../components/Header/Header';
-import useFetch from '../../hooks/useFetch';
 
-const Home = ({ id }) => {
+const Home = () => {
     // Ici tu appelles ton hook avec une URL pour tester
-    useFetch(`http://localhost:3000/user/${id}`);
-
-    < Header />
+    return (
+        <>
+            <Link to='/profile/12'>
+                <button className={styles.button}>1er bouton</button>
+            </Link>
+            <Link to='/profile/18'>
+                <button className={styles.button}>2eme bouton</button>
+            </Link>
+        </>
+    )
 }
 
 export default Home

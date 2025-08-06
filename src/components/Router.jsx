@@ -7,12 +7,15 @@ import Community from "../pages/Community/Community";
 import NotFound from "../pages/NotFound/NotFound";
 
 const AppRouter = () => {
+    const id = window.location
+    console.log('id', id);
+    
     return (
         <BrowserRouter>
             <Routes>
                 <Route path="/" element={<Layout />}>
                     <Route index element={<Home />} />
-                    <Route path="profile" element={<Profile />} />
+                    <Route path="profile/:userId" element={<Profile />} />
                     <Route path="settings" element={<Settings />} />
                     <Route path="community" element={<Community />} />
                     <Route path="*" element={<NotFound/> } />

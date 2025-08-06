@@ -1,2 +1,10 @@
 @use '../../sass/abstracts/variables' as *;
 @use '../../sass/abstracts/mixins' as *;
+
+
+.button {
+    @include dimension($width: 100px, $height: 50px);
+    border: 1px solid blue;
+    @include flex();
+    gap: 5px;
+}
