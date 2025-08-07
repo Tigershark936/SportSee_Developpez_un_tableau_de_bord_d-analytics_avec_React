@@ -3,6 +3,7 @@ import useFetch from '../../hooks/useFetch';
 import UserGreeting from '../../components/UserGreeting/UserGreeting';
 import NutritionStatCard from '../../components/NutritionStatCard/NutritionStatCard';
 import styles from './Profile.module.scss';
+import BarChart from '../../components/BarChart/BarChart';
 
 import fire from '../../assets/fire-calori.svg';
 import chicken from '../../assets/chicken-protein.svg';
@@ -17,7 +18,7 @@ const Profile = () => {
     const {data, isLoading, error} = useFetch(
         `http://localhost:3000/user/${userId}`
     );
-    console.log('data', data);
+    // console.log('data', data);
 
     const { data: activity, isLoading: isActivityLoading, error: activityError } = useFetch(
         `http://localhost:3000/user/${userId}/activity`
@@ -50,7 +51,7 @@ const Profile = () => {
     }
     
     // Extraire le prénom (en vérifiant que data existe)
-    const firstName = data?.data?.userInfos?.firstName || '';
+    const firstName = data.data.userInfos.firstName;
 
     return (
         <>
@@ -61,7 +62,7 @@ const Profile = () => {
             </div>
             <section className={styles.dashboardSection}>
                 <div className={styles.graphics}>
-                    <div className={styles.barchart}>BarChart</div>
+                    <div className={styles.barchart}>BarChart<BarChart/></div>
                     <div className={styles.otherchart}>
                         <div>LineChart.</div>
                         <div>d’un radar chart.</div>
@@ -73,22 +74,30 @@ const Profile = () => {
                     <NutritionStatCard 
                         logo={fire} 
                         alt="Fire icon"
+                        valueNutrient={data?.data?.keyData?.calorieCount || ''}
                         unit='kCal'
+                        nutrient='Calories'
                     />
                     <NutritionStatCard 
                         logo={chicken}
                         alt="Chicken icon"
+                        valueNutrient={data?.data?.keyData?.proteinCount || ''}
                         unit='g'
+                        nutrient='Protéines'
                     />
                     <NutritionStatCard 
                         logo={apple} 
                         alt="Apple icon"
+                        valueNutrient={data?.data?.keyData?.carbohydrateCount || ''}
                         unit='g'
+                        nutrient='Glucides'
                     />
                     <NutritionStatCard 
                         logo={burger} 
                         alt="Cheeseburger icon"
+                        valueNutrient={data?.data?.keyData?.lipidCount || ''}
                         unit='g'
+                        nutrient="lipides"
                     />
                 </aside>
             </section>

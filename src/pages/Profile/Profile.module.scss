@@ -8,10 +8,11 @@
 }
 
 .dashboardSection {
-    @include flex($justifyContent: start, $alignItems: start);
+    @include flex($justifyContent: space-between, $alignItems: start);
     gap: 31px;
     margin-top: 77px;
     margin-left: 109px;
+    margin-right: 90px;
     border: 1px solid blue;
 }
 
@@ -21,6 +22,7 @@
 }
 
 .graphics {
+    @include dimension($width: 100%, $height: 100%);
     border: 1px solid red;
     @include flex($orientation: column);
     gap: 28px;
