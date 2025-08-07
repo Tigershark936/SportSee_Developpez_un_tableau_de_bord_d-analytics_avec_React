@@ -1,0 +1,25 @@
+@use '../../sass/abstracts/variables' as *;
+@use '../../sass/abstracts/mixins' as *;
+
+.container {
+    @include flex($alignItems: start, $orientation: column);
+    gap: 21px;
+}
+
+.h1 {
+    @include dimension();
+    @include textStyle(
+        $fontWeight: 500,
+        $fontSize: 3rem,
+    );
+}
+
+.firstName {
+    color: $font-fourth-color;
+}
+
+.p {
+    @include textStyle(
+        $fontSize: 1.125rem,
+    )
+}

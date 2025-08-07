@@ -1,6 +1,5 @@
 import { Link } from 'react-router-dom';
 import styles from './Home.module.scss';
-import Header from '../../components/Header/Header';
 
 const Home = () => {
     // Ici tu appelles ton hook avec une URL pour tester

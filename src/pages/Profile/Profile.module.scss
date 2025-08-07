@@ -1,0 +1,8 @@
+@use '../../sass/abstracts/variables' as *;
+@use '../../sass/abstracts/mixins' as *;
+
+.container {
+    @include dimension();
+    margin-top: 68px;
+    margin-left: 107px;
+}
