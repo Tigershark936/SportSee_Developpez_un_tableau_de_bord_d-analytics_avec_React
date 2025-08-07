@@ -18,7 +18,7 @@ const Profile = () => {
     const {data, isLoading, error} = useFetch(
         `http://localhost:3000/user/${userId}`
     );
-    // console.log('data', data);
+    console.log('data', data);
 
     const { data: activity, isLoading: isActivityLoading, error: activityError } = useFetch(
         `http://localhost:3000/user/${userId}/activity`
