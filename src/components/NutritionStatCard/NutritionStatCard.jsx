@@ -1,10 +1,10 @@
 import PropTypes from 'prop-types';
 import styles from './NutritionStatCard.module.scss';
 
-const NutritionStatCard = ({ logo, alt, valueNutrient, unit, nutrient}) => {
+const NutritionStatCard = ({ logo, alt, categorie, valueNutrient, unit, nutrient}) => {
     return (
         <div className={styles.cardNutrients}>
-			<div className={styles.cardIconWrapper}>
+			<div className={`${styles.cardIconWrapper} ${styles[`cardIconWrapper--${categorie}`]}`}>
 				<img src={logo} alt={alt} className={styles.calorieIcon} />
 			</div>
 			<div className={styles.cardDataWrapper}>

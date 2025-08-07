@@ -77,6 +77,7 @@ const Profile = () => {
                         valueNutrient={data?.data?.keyData?.calorieCount || ''}
                         unit='kCal'
                         nutrient='Calories'
+                        categorie='calories'
                     />
                     <NutritionStatCard 
                         logo={chicken}
@@ -84,6 +85,7 @@ const Profile = () => {
                         valueNutrient={data?.data?.keyData?.proteinCount || ''}
                         unit='g'
                         nutrient='Protéines'
+                        categorie='protein'
                     />
                     <NutritionStatCard 
                         logo={apple} 
@@ -91,6 +93,7 @@ const Profile = () => {
                         valueNutrient={data?.data?.keyData?.carbohydrateCount || ''}
                         unit='g'
                         nutrient='Glucides'
+                        categorie='glucides'
                     />
                     <NutritionStatCard 
                         logo={burger} 
@@ -98,6 +101,7 @@ const Profile = () => {
                         valueNutrient={data?.data?.keyData?.lipidCount || ''}
                         unit='g'
                         nutrient="lipides"
+                        categorie='lipides'
                     />
                 </aside>
             </section>
