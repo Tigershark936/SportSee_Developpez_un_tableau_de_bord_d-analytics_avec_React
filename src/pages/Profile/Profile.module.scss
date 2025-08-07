@@ -6,3 +6,25 @@
     margin-top: 68px;
     margin-left: 107px;
 }
+
+.DashboardSection {
+    @include flex();
+    gap: 31px;
+    border: 1px solid blue;
+}
+
+.graphics {
+    border: 1px solid red;
+    @include flex($orientation: column);
+    gap: 28px;
+}
+
+.barchart{
+    border: 1px solid green;
+}
+
+.otherchart {
+    border: 1px solid purple;
+    @include flex();
+    gap: 30px;
+}
