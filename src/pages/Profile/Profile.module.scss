@@ -7,10 +7,17 @@
     margin-left: 107px;
 }
 
-.DashboardSection {
-    @include flex();
+.dashboardSection {
+    @include flex($justifyContent: start, $alignItems: start);
     gap: 31px;
+    margin-top: 77px;
+    margin-left: 109px;
     border: 1px solid blue;
+}
+
+.dashboardAside {
+    @include flex($orientation: column);
+    gap: 39px;
 }
 
 .graphics {

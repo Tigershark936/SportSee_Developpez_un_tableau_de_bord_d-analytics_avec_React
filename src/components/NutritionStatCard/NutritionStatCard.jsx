@@ -1,16 +1,14 @@
 import PropTypes from 'prop-types';
 import styles from './NutritionStatCard.module.scss';
 
-import fire from '../../assets/fire-calori.svg';
-
-const NutritionStatCard = ({ logo, alt,}) => {
+const NutritionStatCard = ({ logo, alt, unit}) => {
     return (
         <div className={styles.cardNutrients}>
 			<div className={styles.cardIconWrapper}>
-				<img src={fire} alt={alt} className={styles.calorieIcon} />
+				<img src={logo} alt={alt} className={styles.calorieIcon} />
 			</div>
 			<div className={styles.cardDataWrapper}>
-				<p className={styles.valueNutrient}>1520kg</p>
+				<p className={styles.valueNutrient}>1520{unit}</p>
 				<p className={styles.titleNutrient}>Protéines</p>
 			</div>
 		</div>

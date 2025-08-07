@@ -1,0 +1,41 @@
+@use '../../sass/abstracts/variables' as *;
+@use '../../sass/abstracts/mixins' as *;
+
+.container {
+    margin-top: 68px;
+    @include flex($orientation: column);
+    gap: 139px;
+}
+
+.h1 {
+    @include textStyle(
+        $fontWeight: 700,
+        $fontSize: 18rem,
+        $color: $font-fourth-color,
+    );
+    line-height: 1;
+    margin: 0;
+    padding: 0;
+}
+
+
+.h2 {
+    @include textStyle(
+        $fontSize: 2.25rem,
+        $color: $font-fourth-color,
+    );
+    text-align: center;
+}
+
+.span {
+    display: inline;
+}
+
+.p {
+    @include textStyle($fontSize: 1.125rem);
+
+    &:hover {
+        text-decoration: underline;
+        text-underline-offset: 3px;
+    }
+}

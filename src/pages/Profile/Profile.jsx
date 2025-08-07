@@ -4,10 +4,10 @@ import UserGreeting from '../../components/UserGreeting/UserGreeting';
 import NutritionStatCard from '../../components/NutritionStatCard/NutritionStatCard';
 import styles from './Profile.module.scss';
 
-// import fire from '../../assets/fire-calori.svg';
-// import chicken from '../../assets/chicken-protein.svg';
-// import apple from '../../assets/apple-glucide.svg';
-// import burger from '../../assets/cheeseburger-lipid.svg';
+import fire from '../../assets/fire-calori.svg';
+import chicken from '../../assets/chicken-protein.svg';
+import apple from '../../assets/apple-glucide.svg';
+import burger from '../../assets/cheeseburger-lipid.svg';
 
 const Profile = () => {
     // Me permet de récuperer le paramètre userId
@@ -24,10 +24,20 @@ const Profile = () => {
     );
     console.log('activity', activity);   
 
+    const { data: averageSessions, isLoading: isAverageSessions, error: averageSessionsError} = useFetch(
+       `http://localhost:3000/user/${userId}/average-sessions` 
+    )
+    console.log('moyenne des sessions', averageSessions);    
+
+    const { data: performance, isLoading: isPerformance, error: performanceError } = useFetch(
+        `http://localhost:3000/user/${userId}/performance`
+    )
+    console.log('performance', performance);
+       
     // Je regroupe tous les isLoading individuels
-    const isLoadingGlobal = isLoading || isActivityLoading
+    const isLoadingGlobal = isLoading || isActivityLoading || isAverageSessions
     // Je regroupe toutes les error individuelles
-    const hasError = error || activityError 
+    const hasError = error || activityError || averageSessionsError
     
     // Gestion des erreurs
     if (hasError) {
@@ -49,7 +59,7 @@ const Profile = () => {
                     firstname={firstName} 
                 />
             </div>
-            <section className={styles.DashboardSection}>
+            <section className={styles.dashboardSection}>
                 <div className={styles.graphics}>
                     <div className={styles.barchart}>BarChart</div>
                     <div className={styles.otherchart}>
@@ -59,7 +69,28 @@ const Profile = () => {
                     </div>
 
                 </div>
-                <NutritionStatCard />
+                <aside className={styles.dashboardAside}>
+                    <NutritionStatCard 
+                        logo={fire} 
+                        alt="Fire icon"
+                        unit='kCal'
+                    />
+                    <NutritionStatCard 
+                        logo={chicken}
+                        alt="Chicken icon"
+                        unit='g'
+                    />
+                    <NutritionStatCard 
+                        logo={apple} 
+                        alt="Apple icon"
+                        unit='g'
+                    />
+                    <NutritionStatCard 
+                        logo={burger} 
+                        alt="Cheeseburger icon"
+                        unit='g'
+                    />
+                </aside>
             </section>
         </>
     )
