@@ -4,6 +4,7 @@ import UserGreeting from '../../components/UserGreeting/UserGreeting';
 import NutritionStatCard from '../../components/NutritionStatCard/NutritionStatCard';
 import styles from './Profile.module.scss';
 import BarChart from '../../components/BarChart/BarChart';
+import NotFound from '../NotFound/NotFound';
 
 import fire from '../../assets/fire-calori.svg';
 import chicken from '../../assets/chicken-protein.svg';
@@ -36,9 +37,9 @@ const Profile = () => {
     console.log('performance', performance);
        
     // Je regroupe tous les isLoading individuels
-    const isLoadingGlobal = isLoading || isActivityLoading || isAverageSessions
+    const isLoadingGlobal = isLoading || isActivityLoading || isAverageSessions || isPerformance
     // Je regroupe toutes les error individuelles
-    const hasError = error || activityError || averageSessionsError
+    const hasError = error || activityError || averageSessionsError || performanceError
     
     // Gestion des erreurs
     if (hasError) {

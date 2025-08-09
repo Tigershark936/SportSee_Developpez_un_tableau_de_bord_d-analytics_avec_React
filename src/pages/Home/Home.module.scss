@@ -1,10 +1,38 @@
 @use '../../sass/abstracts/variables' as *;
 @use '../../sass/abstracts/mixins' as *;
 
+.container {
+    @include flex($justifyContent: center, $alignItems: center, $orientation: column);
+    margin-top: 190px;
+}
+
+.fieldset {
+    @include flex($alignItems: center, $orientation: column);
+    min-width: 375px;
+    gap: 30px;
+    text-align: center;
+    padding: 32px;
+    border: 3px solid $font-third-color;
+    border-radius: 10px;
+}
+
+.legend {
+    @include textStyle(
+        $fontWeight: 700,
+        $color: $font-third-color,
+        $fontSize: 1.5rem
+    );
+    padding: 0px 1rem;
+}
 
 .button {
-    @include dimension($width: 100px, $height: 50px);
-    border: 1px solid blue;
+    @include dimension($width: 300px, $height: 50px);
     @include flex();
-    gap: 5px;
+    border: 1px solid $font-fourth-color;
+    border-radius: 8px;
+    @include textStyle(
+        $fontWeight: 500,
+        $color: $font-third-color,
+        $fontSize: 1rem
+    );
 }

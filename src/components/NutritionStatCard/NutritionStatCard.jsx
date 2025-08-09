@@ -18,6 +18,7 @@ const NutritionStatCard = ({ logo, alt, categorie, valueNutrient, unit, nutrient
 
 NutritionStatCard.PropTypes = {
 
+	categorie: PropTypes.string,
     logo: PropTypes.string,
     valueNutrient: PropTypes.number.isRequired,
     unit: PropTypes.string.isRequired,
