@@ -5,6 +5,7 @@ import NutritionStatCard from '../../components/NutritionStatCard/NutritionStatC
 import styles from './Profile.module.scss';
 import BarChart from '../../components/BarChart/BarChart';
 import NotFound from '../NotFound/NotFound';
+import Loader from '../../components/Loader/Loader';
 
 import fire from '../../assets/fire-calori.svg';
 import chicken from '../../assets/chicken-protein.svg';
@@ -48,7 +49,7 @@ const Profile = () => {
 
      // Gestion du chargement
     if (isLoadingGlobal) {
-        return <p>Chargement...</p>;
+        return < Loader />;
     }
     
     // Extraire le prénom (en vérifiant que data existe)
