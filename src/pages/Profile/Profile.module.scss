@@ -29,7 +29,20 @@
 }
 
 .barchart{
+    @include dimension($width: 100%);
+    background: rgba(251, 251, 251, 1);
     border: 1px solid green;
+    position: relative;
+}
+
+.barChartTitle {
+    position: absolute;
+    top: 24px;
+    left: 32px;
+    @include textStyle(
+        $fontWeight: 500,
+        $fontSize: 0.938rem, 
+    )
 }
 
 .otherchart {

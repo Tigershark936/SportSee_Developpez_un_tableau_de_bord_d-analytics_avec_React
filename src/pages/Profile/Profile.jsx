@@ -3,9 +3,9 @@ import useFetch from '../../hooks/useFetch';
 import UserGreeting from '../../components/UserGreeting/UserGreeting';
 import NutritionStatCard from '../../components/NutritionStatCard/NutritionStatCard';
 import styles from './Profile.module.scss';
-import BarChart from '../../components/BarChart/BarChart';
 import NotFound from '../NotFound/NotFound';
 import Loader from '../../components/Loader/Loader';
+import MyBarChart from '../../components/BarChart/BarChart';
 
 import fire from '../../assets/fire-calori.svg';
 import chicken from '../../assets/chicken-protein.svg';
@@ -64,7 +64,12 @@ const Profile = () => {
             </div>
             <section className={styles.dashboardSection}>
                 <div className={styles.graphics}>
-                    <div className={styles.barchart}>BarChart<BarChart/></div>
+                    <div className={styles.barchart}>
+                        <p className={styles.barChartTitle} >Activité quotidienne</p>
+                        <MyBarChart
+                            activity={activity?.data?.sessions || []}
+                        />
+                    </div>
                     <div className={styles.otherchart}>
                         <div>LineChart.</div>
                         <div>d’un radar chart.</div>
