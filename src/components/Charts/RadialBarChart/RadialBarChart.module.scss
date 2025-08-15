@@ -1,0 +1,40 @@
+@use '../../../sass/abstracts/variables' as *;
+@use '../../../sass/abstracts/mixins' as *;
+
+.wrapper {
+    @include dimension($height: auto);
+    position: relative;
+}
+
+.RadialBarChart {
+    width: 258px;
+    background: rgba(251, 251, 251, 1);
+    inset: 0;
+    @include border($borderRadius: 5px);
+}
+
+.RadialBarChartTitle {
+    position: absolute;
+    top: 24px;
+    left: 30px;
+}
+
+.LabelRadialBarChart {
+    position: absolute;
+    top: 34%;
+    left: 40%;
+    @include textStyle(
+        $fontWeight: 500, 
+        $color: $font-third-color, 
+        $fontSize: 1rem,
+    );
+    @include flex($orientation: column);
+}
+
+.span {
+    @include textStyle(
+        $fontWeight: 700,
+        $fontSize: 1.625rem,
+        $color: rgba(40, 45, 48, 1),
+    )
+}

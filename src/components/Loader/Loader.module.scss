@@ -3,8 +3,8 @@
 
 .loaderWrapper {
   @include flex();
-  height: 100vh; // pleine hauteur de la page
-  width: 100vw;  // pleine largeur
+  height: 100%;
+  width: 1440px;
 }
 
 .progress {

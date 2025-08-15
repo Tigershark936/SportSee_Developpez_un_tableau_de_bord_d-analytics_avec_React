@@ -1,0 +1,14 @@
+@use '../../../sass/abstracts/variables' as *;
+@use '../../../sass/abstracts/mixins' as *;
+
+.wrapper {
+    @include dimension($width: 100%, $height: auto);
+    position: relative;
+}
+
+.RadarChart {
+    width: 258px;
+	position: relative;
+    background-color: rgb(40, 45, 48, 1);
+    @include border($borderRadius: 5px);
+}

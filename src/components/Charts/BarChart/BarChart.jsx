@@ -30,12 +30,14 @@ const MyBarChart = ({ activity = [] }) => {
                 />
                 {/* Y gauche caché pour kCal */}
                 <YAxis
+                    dataKey="kilogram"
                     orientation="right"
                     axisLine={false} // cache la ligne de base de l’axe
                     tickLine={false} // cache les petits traits des graduations
                     tick={{ fill: 'rgba(155, 158, 172, 1)', fontSize: 14, textAnchor: 'middle'}}
                     tickMargin={45}
-                    domain={[67, 'dataMax + 1']}
+                    domain={['dataMin-2', 'dataMax+1']}
+                    tickCount={3}
                 />
                 {/* Avec Tooltip, Recharts affiche automatiquement les valeurs de chaque série à la position du curseur. */}
                 <Tooltip
@@ -47,7 +49,7 @@ const MyBarChart = ({ activity = [] }) => {
                         `${value} ${dataKey === 'kilogram' ? 'kg' : 'kCal'}`,
                         ''
                     ]}
-                    contentStyle={{ width: 39, height: 63, background: "#e60000ff", textAlign: 'center' }}
+                    contentStyle={{ width: 39, height: 63, background: "#e60000ff", textAlign: 'center', padding: '11px 4px'}}
                     itemStyle={{ fontFamily: 'Roboto, sans-serif', fontWeight: 500, fontSize: 7, color: '#fff' }}
                 />
                 <Legend

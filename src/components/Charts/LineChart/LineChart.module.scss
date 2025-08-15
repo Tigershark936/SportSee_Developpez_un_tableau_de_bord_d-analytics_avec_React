@@ -1,0 +1,23 @@
+@use '../../../sass/abstracts/variables' as *;
+@use '../../../sass/abstracts/mixins' as *;
+
+.wrapper {
+    @include dimension($height: auto);
+    position: relative;
+}
+
+.LineChart {
+    background-color: $font-fourth-color;
+    @include border($borderRadius: 5px);
+}
+
+.LineChartTitle {
+    position: absolute;
+    top: 29px;
+    left: 34px;
+    color: rgba(255, 255, 255, 0.525);
+}
+
+.span {
+    display: block;
+}

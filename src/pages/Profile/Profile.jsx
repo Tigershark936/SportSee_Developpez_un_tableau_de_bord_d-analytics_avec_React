@@ -5,7 +5,10 @@ import NutritionStatCard from '../../components/NutritionStatCard/NutritionStatC
 import styles from './Profile.module.scss';
 import NotFound from '../NotFound/NotFound';
 import Loader from '../../components/Loader/Loader';
-import MyBarChart from '../../components/BarChart/BarChart';
+import MyBarChart from '../../components/Charts/BarChart/BarChart';
+import MyLineChart from '../../components/Charts/LineChart/LineChart';
+import MyRadarChart from '../../components/Charts/RadarChart/RadarChart';
+import MyRadialBarChart from '../../components/Charts/RadialBarChart/RadialBarChart';
 
 import fire from '../../assets/fire-calori.svg';
 import chicken from '../../assets/chicken-protein.svg';
@@ -71,9 +74,20 @@ const Profile = () => {
                         />
                     </div>
                     <div className={styles.otherchart}>
-                        <div>LineChart.</div>
-                        <div>d’un radar chart.</div>
-                        <div>RadialBarChart.</div>
+                        <MyLineChart 
+                            sessions={averageSessions?.data?.sessions || []}
+                        />
+                        <MyRadarChart 
+                            performance={
+                                performance?.data?.data?.map(item => ({
+                                    kind: performance.data.kind[item.kind],
+                                    value: item.value
+                                })) || []
+                            }
+                        />
+                        <MyRadialBarChart 
+                            score={data?.data?.todayScore ?? data?.data?.score ?? ''}
+                        />
                     </div>
 
                 </div>

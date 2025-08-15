@@ -5,6 +5,10 @@
     @include dimension();
     margin-top: 68px;
     margin-left: 107px;
+
+    @media (max-width: 1024px) {
+        margin-left: 50px;
+    }
 }
 
 .dashboardSection {
@@ -13,17 +17,27 @@
     margin-top: 77px;
     margin-left: 109px;
     margin-right: 90px;
-    border: 1px solid blue;
+
+    @media (max-width: 1024px) {
+        flex-direction: column; // Passe en colonne
+        margin-left: 50px;
+        margin-right: 20px;
+  }
 }
 
 .dashboardAside {
     @include flex($orientation: column);
     gap: 39px;
+
+    @media (max-width: 1024px)  {
+        @include flex($justifyContent: start);
+        order: -1; // Place avant .graphics
+        flex-wrap: wrap;
+  }
 }
 
 .graphics {
     @include dimension($width: 100%, $height: 100%);
-    border: 1px solid red;
     @include flex($orientation: column);
     gap: 28px;
 }
@@ -31,7 +45,6 @@
 .barchart{
     @include dimension($width: 100%);
     background: rgba(251, 251, 251, 1);
-    border: 1px solid green;
     position: relative;
 }
 
@@ -46,7 +59,12 @@
 }
 
 .otherchart {
-    border: 1px solid purple;
-    @include flex();
+    @include dimension($width: 100%);
+    @include flex($justifyContent: space-evenly);
     gap: 30px;
+
+    @media (max-width: 1024px)  {
+        flex-wrap: wrap;
+        gap: 10px;
+    }
 }

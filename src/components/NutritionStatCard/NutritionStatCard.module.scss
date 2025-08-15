@@ -8,7 +8,11 @@
     background: rgba(251, 251, 251, 1);
     box-shadow: 0px 2px 4px 0px rgba(0, 0, 0, 0.0212);
     @include border($borderRadius: 5px);
-    border: 1px solid black;
+
+    @media (max-width: 1024px) {
+        width: 170px;
+        height: 110px; 
+    }
 }
 
 .cardIconWrapper {
@@ -27,17 +31,31 @@
     &--lipides {
         background: rgba(253, 81, 129, 0.212);
     }
+
+    @media (max-width: 1024px) {
+        width: 50px;
+        height: 50px;
+  }
 }
 
 .calorieIcon {
     @include dimension($width: 19px, $height: 19px);
+
+    @media (max-width: 1024px) {
+        width: 16px;
+        height: 16px;
+    }
 }
 
 .valueNutrient {
     @include textStyle(
         $fontWeight: 700,
         $fontSize: 1.25rem,
-    )
+    );
+
+    @media (max-width: 1024px) {
+        font-size: 1.1rem;
+    }
 }
 
 .titleNutrient {
@@ -45,5 +63,9 @@
         $fontWeight: 500,
         $fontSize: 0.875rem,
         $color: $font-third-color,
-    )
+    );
+
+    @media (max-width: 1024px) {
+        font-size: 0.8rem;
+    }
 }
