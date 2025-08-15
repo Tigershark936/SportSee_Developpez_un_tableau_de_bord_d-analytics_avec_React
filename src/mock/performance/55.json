@@ -11,19 +11,19 @@
         },
         "data": [
             {
-                "value": 90,
+                "value": 100,
                 "kind": 1
             },
             {
-                "value": 110,
+                "value": 190,
                 "kind": 2
             },
             {
-                "value": 140,
+                "value": 180,
                 "kind": 3
             },
             {
-                "value": 60,
+                "value": 110,
                 "kind": 4
             },
             {
