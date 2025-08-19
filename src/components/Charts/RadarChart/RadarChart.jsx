@@ -1,3 +1,4 @@
+import PropTypes from 'prop-types';
 import { useCallback, useMemo } from 'react';
 import styles from './RadarChart.module.scss';
 import { Radar, RadarChart, PolarGrid, PolarAngleAxis, PolarRadiusAxis, ResponsiveContainer } from 'recharts';
@@ -71,5 +72,21 @@ const MyRadarChart = ({performance = []}) => {
         </ResponsiveContainer>
     );
 }
+
+MyRadarChart.propTypes = {
+    /**
+    * performance : tableau d’objets 
+    * Chaque objet doit contenir :
+    *  - kind  : string parmi la liste ORDER 
+    *  - value : number (valeur affichée par le radar)
+    */
+  performance: PropTypes.arrayOf(
+    PropTypes.shape({
+      // on contraint aux valeurs de ORDER (sécurise contre une faute de frappe)
+      kind: PropTypes.oneOf(['intensity', 'speed', 'strength', 'endurance', 'energy', 'cardio']).isRequired,
+      value: PropTypes.number.isRequired,
+    })
+  ),
+};
 
 export default MyRadarChart

@@ -1,3 +1,4 @@
+import PropTypes from 'prop-types';
 import styles from './RadialBarChart.module.scss'
 import { RadialBarChart, RadialBar, ResponsiveContainer } from 'recharts';
 
@@ -8,6 +9,7 @@ const MyRadialBarChart = ({score}) => {
     // - Sinon, on considère que le score est déjà en pourcentage (ex: 69).
     // Math.round() sert à arrondir le résultat à l'entier le plus proche.
     const percent = Math.round(score <= 1 ? score * 100 : score);
+    // Data attendue par <RadialBar/> : un tableau d’objets { name, value }
     const dataArray = [{ name: 'score', value: score }]
 
     // Calcul des angles pour RadialBar
@@ -55,5 +57,14 @@ const MyRadialBarChart = ({score}) => {
         </div>
     );
 }
+
+MyRadialBarChart.propTypes = {
+    /**
+    * Vérification des props de MyRadialBarChart
+    *
+    * - score : number OBLIGATOIRE
+    */
+    score: PropTypes.number.isRequired,
+};
 
 export default MyRadialBarChart

@@ -12,7 +12,7 @@ const MyBarChart = ({ activity = [] }) => {
         <ResponsiveContainer width='100%' height={320}>
             <BarChart
                 data={data}
-                margin={{ top: 112.5, right: 90, left: 32, bottom: 5 }}
+                margin={{ top: 112.5, right: 90, left: 32, bottom: 23 }}
             >
                 {/* vertical={false} → enlève toutes les lignes verticales (axe X)
                 horizontal={false} → enlève toutes les lignes horizontales (axe Y) */}
@@ -83,8 +83,21 @@ const MyBarChart = ({ activity = [] }) => {
     )
 }
 
-MyBarChart.PropTypes = {
-
-    activity: PropTypes.object.isRequired
+MyBarChart.propTypes = {
+    /**
+    * Vérification des props de MyBarChart
+    *
+    * - activity : objet OBLIGATOIRE 
+    *   Cet objet doit contenir :
+    *     • day        
+    *     • kilogram   
+    *     • calories   
+    */
+    activity: PropTypes.shape({
+        day: PropTypes.string.isRequired,      // jour obligatoire (ex: "2020-07-01")
+        kilogram: PropTypes.number.isRequired, // poids obligatoire en nombre
+        calories: PropTypes.number.isRequired, // calories obligatoires en nombre
+    }).isRequired,
 }
+
 export default MyBarChart
