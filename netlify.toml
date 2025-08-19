@@ -1,5 +1,4 @@
 [build]
-  base = "daly-alain-react" 
   command = "npm run build"
   publish = "dist"
 
