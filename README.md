@@ -44,3 +44,9 @@ SportSee is a modern application built with React & Vite. It allows users to vis
 
 </div>
 
+<br/>
+
+<div align="center">
+    <!-- Maquette -->
+    <img src="./MaquetteSportSee.png" alt="SportSee Dashboard" width="600"/>
+</div>
