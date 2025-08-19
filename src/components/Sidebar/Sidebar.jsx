@@ -2,9 +2,9 @@ import styles from './Sidebar.module.scss';
 import SidebarButton from '../SidebarButton/SidebarButton';
 
 import yoga from '../../assets/yoga.png';
-import swim from '../../assets/Swimming.png';
-import bike from '../../assets/Cyclist.png';
-import dumbbell from '../../assets/Bodybuilding.png';
+import swim from '../../assets/swimming.png';
+import bike from '../../assets/cyclist.png';
+import dumbbell from '../../assets/bodybuilding.png';
 
 const Sidebar = () => {
     return (
