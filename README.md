@@ -253,4 +253,4 @@ This project is licensed under the MIT License – see [LICENSE](./LICENSE) for 
 ## 👤 Author
 
 **Alain**  
-Repo: [https://github.com/Tigershark936/SportSee_Developpez_un_tableau_de_bord_d-analytics_avec_React](https://github.com/Tigershark936/SportSee_Developpez_un_tableau_de_bord_d-analytics_avec_React)
+Mon GitHub: [ ⚡Retrouvez-moi sur GitHub ⚡](https://github.com/Tigershark936)
