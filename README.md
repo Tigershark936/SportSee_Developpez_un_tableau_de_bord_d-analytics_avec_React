@@ -1,4 +1,4 @@
-p<p align="center">
+<p align="center">
   <img src="./src/assets/logoRunner.png" alt="Runner Logo" width="60"/>
   <img src="./src/assets/logoNameSite.png" alt="SportSee Logo" width="200"/>
 </p>
