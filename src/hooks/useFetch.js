@@ -16,10 +16,10 @@ const useFetch = (url) => {
     const [error, setError] = useState(false) // Permet de suivre l’état d’une erreur
 
     useEffect(() => {
-        console.log('URL reçue', url);
+        // console.log('URL reçue', url);
         
         if(!url){
-            console.warn('⚠️ Aucun url donné', url);
+            // console.warn('⚠️ Aucun url donné', url);
             setLoading(false);
             return;
         }
@@ -38,10 +38,10 @@ const useFetch = (url) => {
                 const mustMock = USE_MOCK_ALL || MOCK_ONLY_IDS.has(id);
 
                 if (mustMock) {
-                    console.log(" 🟢 MODE MOCK ACTIVÉ ");
+                    // console.log(" 🟢 MODE MOCK ACTIVÉ ");
                     json = await mockFetchByUrl(url);
                 } else {
-                    console.log(" 🟣 MODE API RÉEL ");
+                    // console.log(" 🟣 MODE API RÉEL ");
                     const response = await fetch(url)
                     console.log("Réponse brute fetch :", response);
 
@@ -73,7 +73,7 @@ const useFetch = (url) => {
                 }
             } finally {
                 if (!canceled) {
-                    console.log("Fin de recherche de la requête useFetch");
+                    // console.log("Fin de recherche de la requête useFetch");
                     setLoading(false)
                 }
             }

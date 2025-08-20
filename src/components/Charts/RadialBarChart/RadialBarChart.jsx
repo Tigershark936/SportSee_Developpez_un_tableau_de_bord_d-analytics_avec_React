@@ -20,34 +20,32 @@ const MyRadialBarChart = ({score}) => {
         <div className={styles.wrapper}>
             <p className={styles.RadialBarChartTitle}>Score</p>
 
-            <ResponsiveContainer 
-                className={styles.RadialBarChart} 
-                width={258} 
-                height={263}
-            >
-                <RadialBarChart 
-                    cx="50%" cy="50%" 
-                    innerRadius="30%" 
-                    outerRadius="90%"
-                    barSize={10} // épaisseur de l'anneau
-                    data={dataArray}
-                    startAngle={start}
-					endAngle={end}
-                >
-                    <circle
-                        cx="50%" cy="50%"
-                        r="80" // ajuste le rayon pour remplir juste le centre
-                        fill="#fff"
-                    />
-                    <RadialBar
-                        dataKey="value"
-                        minAngle={15}
-                        cornerRadius={100}
-                        fill="#e60000ff"
-                        clockWise
-                    />
-                </RadialBarChart>
-            </ResponsiveContainer>
+            <div className={styles.RadialBarChart}>
+                <ResponsiveContainer>
+                    <RadialBarChart 
+                        cx="50%" cy="50%" 
+                        innerRadius="30%" 
+                        outerRadius="90%"
+                        barSize={10} // épaisseur de l'anneau
+                        data={dataArray}
+                        startAngle={start}
+                        endAngle={end}
+                    >
+                        <circle
+                            cx="50%" cy="50%"
+                            r="80" // ajuste le rayon pour remplir juste le centre
+                            fill="#fff"
+                        />
+                        <RadialBar
+                            dataKey="value"
+                            minAngle={15}
+                            cornerRadius={100}
+                            fill="#e60000ff"
+                            clockWise
+                        />
+                    </RadialBarChart>
+                </ResponsiveContainer>
+            </div>
 
             <div className={styles.LabelRadialBarChart}>
                 <span className={styles.span}>{percent}%</span>

@@ -25,51 +25,49 @@ const MyRadarChart = ({performance = []}) => {
     }, [performance]);
 
     return (
-        <ResponsiveContainer 
-            className={styles.RadarChart} 
-            width={258} 
-            height={263}
-        >
-            <RadarChart 
-                cx="50%" 
-                cy="50%" 
-                outerRadius="70%" 
-                data={sortedData}
-            >
-                <PolarGrid 
-                    radialLines={false}
-                />
-                <PolarAngleAxis
-                    dataKey="kind"
-                    tick={(props) => {
-                    const { x, y, payload, textAnchor } = props;
-                        return (
-                            <text
-                                x={x}
-                                y={y + 1}
-                                fill="#ffffff"
-                                fontSize={12}
-                                textAnchor={textAnchor}
-                                dominantBaseline="middle"
-                            >
-                                {formatLabel(payload.value)}
-                            </text>
-                        );
-                    }}
-                />
-                <PolarRadiusAxis 
-                    tickCount={6}
-                    tick={false}
-                    axisLine={false}
-                />
-                <Radar 
-                    dataKey="value" 
-                    stroke="#e60000ff" 
-                    fill="#e60000ff"
-                    fillOpacity={0.6} 
-                />
-            </RadarChart>
-        </ResponsiveContainer>
+        <div className={styles.RadarChart}>
+            <ResponsiveContainer width="100%" height="100%">
+                <RadarChart 
+                    cx="50%" 
+                    cy="50%" 
+                    outerRadius="70%" 
+                    data={sortedData}
+                >
+                    <PolarGrid 
+                        radialLines={false}
+                    />
+                    <PolarAngleAxis
+                        dataKey="kind"
+                        tick={(props) => {
+                        const { x, y, payload, textAnchor } = props;
+                            return (
+                                <text
+                                    x={x}
+                                    y={y + 1}
+                                    fill="#ffffff"
+                                    fontSize={12}
+                                    textAnchor={textAnchor}
+                                    dominantBaseline="middle"
+                                >
+                                    {formatLabel(payload.value)}
+                                </text>
+                            );
+                        }}
+                    />
+                    <PolarRadiusAxis 
+                        tickCount={6}
+                        tick={false}
+                        axisLine={false}
+                    />
+                    <Radar 
+                        dataKey="value" 
+                        stroke="#e60000ff" 
+                        fill="#e60000ff"
+                        fillOpacity={0.6} 
+                    />
+                </RadarChart>
+            </ResponsiveContainer>
+        </div>
     );
 }
 

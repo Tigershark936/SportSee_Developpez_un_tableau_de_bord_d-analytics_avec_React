@@ -18,27 +18,27 @@ import burger from '../../assets/cheeseburger-lipid.svg';
 const Profile = () => {
     // Me permet de récuperer le paramètre userId
     const { userId } = useParams()
-    console.log(userId);
+    // console.log(userId);
 
     const {data, isLoading, error} = useFetch(
         `http://localhost:3000/user/${userId}`
     );
-    console.log('data', data);
+    // console.log('data', data);
 
     const { data: activity, isLoading: isActivityLoading, error: activityError } = useFetch(
         `http://localhost:3000/user/${userId}/activity`
     );
-    console.log('activity', activity);   
+    // console.log('activity', activity);   
 
     const { data: averageSessions, isLoading: isAverageSessions, error: averageSessionsError} = useFetch(
        `http://localhost:3000/user/${userId}/average-sessions` 
     )
-    console.log('moyenne des sessions', averageSessions);    
+    // console.log('moyenne des sessions', averageSessions);    
 
     const { data: performance, isLoading: isPerformance, error: performanceError } = useFetch(
         `http://localhost:3000/user/${userId}/performance`
     )
-    console.log('performance', performance);
+    // console.log('performance', performance);
        
     // Je regroupe tous les isLoading individuels
     const isLoadingGlobal = isLoading || isActivityLoading || isAverageSessions || isPerformance

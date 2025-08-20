@@ -33,7 +33,7 @@ const Header = () => {
                         isActive ? `${styles.link} ${styles.active}` : styles.link
                     }
                 >
-                    Réglage
+                    Réglages
                 </NavLink>
                 <NavLink 
                     to='/Community' 

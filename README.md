@@ -1,6 +1,6 @@
-<p align="center">
-  <img src="./src/assets/LogoRunner.png" alt="Runner Logo" width="60"/>
-  <img src="./src/assets/LogoNameSite.png" alt="SportSee Logo" width="200"/>
+p<p align="center">
+  <img src="./src/assets/logoRunner.png" alt="Runner Logo" width="60"/>
+  <img src="./src/assets/logoNameSite.png" alt="SportSee Logo" width="200"/>
 </p>
 
 # SportSee 🏋️ 📊
@@ -48,7 +48,15 @@ SportSee is a modern application built with React & Vite. It allows users to vis
 
 <div align="center">
     <!-- Maquette -->
-    <img src="./MaquetteSportSee.png" alt="SportSee Dashboard" width="600"/>
+    <img src="./MaquetteSportSee.png" alt="SportSee Dashboard" width="700"/>
+</div>
+
+<br>
+
+<div align="center">
+<a href="https://sportsee-tsk.netlify.app/">
+  🌐 SportSee Démo 🌐
+</a>
 </div>
 
 ---

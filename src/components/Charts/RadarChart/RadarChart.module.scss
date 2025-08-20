@@ -8,6 +8,7 @@
 
 .RadarChart {
     width: 258px;
+    height: 263px;
 	position: relative;
     background-color: rgb(40, 45, 48, 1);
     @include border($borderRadius: 5px);

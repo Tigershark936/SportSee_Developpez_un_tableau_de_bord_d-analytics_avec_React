@@ -152,123 +152,127 @@ const MyLineChart = ({ sessions = [] }) => {
 
   return (
     <div className={styles.wrapper}>
-      <p className={styles.LineChartTitle}>Durée moyenne des<span className={styles.span}>sessions</span></p>
+      <p className={styles.LineChartTitle}>
+        Durée moyenne des<span className={styles.span}>sessions</span>
+      </p>
 
-      <ResponsiveContainer className={styles.LineChart} width={258} height={263}>
-        <LineChart
-          data={extendedData}  // on donne au chart avec les points étendus
-          margin={{ top: 0, right: 0, bottom: 0, left: 0 }} // supprime les marges internes
-        >
-          <XAxis
-            type="number"
-            dataKey="dayIndex" // utilise l’index numérique
-            domain={xDomain}   // étend un peu à gauche/droite pour toucher les bords
-            ticks={ticks}      // affiche uniquement les positions réelles (0..n-1)
-            tickFormatter={(i) => dayShort[((i % 7) + 7) % 7]} // Reboucle sur les 7 jours : 0..6 => L M M J V S D, puis 7 => L, 8 => M, etc.
-            tick={{ fill: 'rgba(255, 255, 255, 0.5)' }}
-            axisLine={false}
-            tickLine={false}
-            tickMargin={0}
-            interval={0}
-          />
-          <YAxis
-            hide
-            dataKey="sessionLength"
-            domain={['dataMin-10', 'dataMax+10']}
-          />
+      <div className={styles.LineChart}>
+        <ResponsiveContainer>
+          <LineChart
+            data={extendedData}  // on donne au chart avec les points étendus
+            margin={{ top: 0, right: 0, bottom: 0, left: 0 }} // supprime les marges internes
+          >
+            <XAxis
+              type="number"
+              dataKey="dayIndex" // utilise l’index numérique
+              domain={xDomain}   // étend un peu à gauche/droite pour toucher les bords
+              ticks={ticks}      // affiche uniquement les positions réelles (0..n-1)
+              tickFormatter={(i) => dayShort[((i % 7) + 7) % 7]} // Reboucle sur les 7 jours : 0..6 => L M M J V S D, puis 7 => L, 8 => M, etc.
+              tick={{ fill: 'rgba(255, 255, 255, 0.5)' }}
+              axisLine={false}
+              tickLine={false}
+              tickMargin={0}
+              interval={0}
+            />
+            <YAxis
+              hide
+              dataKey="sessionLength"
+              domain={['dataMin-10', 'dataMax+10']}
+            />
 
-          {/** Avec Defs: = balise spéciale SVG
-          * - Sert à définir des effets graphiques réutilisables (dégradés, filtres, motifs…)
-          * - Ne dessine rien directement → c’est juste un placard à recettes visuelles
-          * - On applique ensuite ces effets avec url(#id) sur un élément du graph 
-          */}
-          <defs>
-            {/* Dégradé de la line */}
-            <linearGradient id="colorUv" x1="0" y1="0" x2="1" y2="0">
-              <stop offset="0"   stopColor="rgba(255,255,255,0.3)" />
-              <stop offset="0.2" stopColor="rgba(255,255,255,0.4)" />
-              <stop offset="0.4" stopColor="rgba(255,255,255,0.5)" />
-              <stop offset="0.6" stopColor="rgba(255,255,255,0.6)" />
-              <stop offset="1"   stopColor="rgba(255,255,255,1)" />
-            </linearGradient>
+            {/** Avec Defs: = balise spéciale SVG
+            * - Sert à définir des effets graphiques réutilisables (dégradés, filtres, motifs…)
+            * - Ne dessine rien directement → c’est juste un placard à recettes visuelles
+            * - On applique ensuite ces effets avec url(#id) sur un élément du graph 
+            */}
+            <defs>
+              {/* Dégradé de la line */}
+              <linearGradient id="colorUv" x1="0" y1="0" x2="1" y2="0">
+                <stop offset="0"   stopColor="rgba(255,255,255,0.3)" />
+                <stop offset="0.2" stopColor="rgba(255,255,255,0.4)" />
+                <stop offset="0.4" stopColor="rgba(255,255,255,0.5)" />
+                <stop offset="0.6" stopColor="rgba(255,255,255,0.6)" />
+                <stop offset="1"   stopColor="rgba(255,255,255,1)" />
+              </linearGradient>
 
-            {/* Filtre "glow" pour effet LED blanc sur le dot actif */}
-            <filter id="glow" x="-50%" y="-50%" width="200%" height="200%">
-              {/* Ombre portée floue */}
-              <feDropShadow 
-                dx="0" dy="0" 
-                stdDeviation="5" 
-                floodColor="#fff" 
-                floodOpacity="1" 
-              />
-            </filter>
-          </defs>
-
-          <Tooltip
-            // on masque le label par défaut
-            labelFormatter={() => ''}
-            // Affiche notre curseur custom à droite du point actif (inclut les ticks)
-            cursor={<ShadowCursor />}
-
-            /**
-            * Tooltip custom :
-            * - Cas 1 : pas de données → rien affiché
-            * - Cas 2 : point fantôme (__ghost) → rien affiché
-            * - Cas 3 : point réel → affiche "valeur min" dans une boîte blanche
-            */
-            content={({ payload }) => {
-              if (!payload || !payload.length) return null; // pas de données → rien
-              const p0 = payload[0]?.payload;
-              if (p0 && p0.__ghost) return null; // pas de tooltip sur les points fantômes
-              const value = payload[0]?.value; // valeur de sessionLength
-              return (
-                <div style={{ background: '#fff', border: 'none', padding: '4px 6px' }}>
-                  <span style={{ 
-                    width: 39, 
-                    height: 25, 
-                    fontWeight: 500, 
-                    fontSize: 8, 
-                    color: '#000', 
-                    textAlign: 'center', 
-                    display: 'inline-block' 
-                    }}
-                  >
-                    {value} min
-                  </span>
-                </div>
-              );
-            }}
-          />
-
-          <Line
-            type="natural" // trace une ligne lissée (courbe naturelle).
-            stroke="url(#colorUv)" // applique mon dégradé défini dans <defs> (id="colorUv").
-            dataKey="sessionLength" // chaque point prend la valeur sessionLength de ton dataset.
-            strokeWidth={2} // épaisseur de la ligne 
-            dot={false}
-            
-            /**
-            * Point actif (activeDot) :
-            * - Cas 1 : si point fantôme (__ghost) → aucun dot
-            * - Cas 2 : si point réel → affiche un cercle blanc avec effet glow
-            */
-            activeDot={({ cx, cy, payload }) => {
-              if (payload && payload.__ghost) return null;  // pas de dot pour les points fantômes
-              return (
-                <circle
-                  cx={cx}
-                  cy={cy}
-                  r={4} // taille du point
-                  fill="#fff" // couleur de remplissage
-                  stroke="#fff" // contour 
-                  strokeWidth={2} // épaisseur du contour
-                  filter='url(#glow)' // // applique de mon filtre glow défini dans <defs>
+              {/* Filtre "glow" pour effet LED blanc sur le dot actif */}
+              <filter id="glow" x="-50%" y="-50%" width="200%" height="200%">
+                {/* Ombre portée floue */}
+                <feDropShadow 
+                  dx="0" dy="0" 
+                  stdDeviation="5" 
+                  floodColor="#fff" 
+                  floodOpacity="1" 
                 />
-              );
-            }}
-          />
-        </LineChart>
-      </ResponsiveContainer>
+              </filter>
+            </defs>
+
+            <Tooltip
+              // on masque le label par défaut
+              labelFormatter={() => ''}
+              // Affiche notre curseur custom à droite du point actif (inclut les ticks)
+              cursor={<ShadowCursor />}
+
+              /**
+              * Tooltip custom :
+              * - Cas 1 : pas de données → rien affiché
+              * - Cas 2 : point fantôme (__ghost) → rien affiché
+              * - Cas 3 : point réel → affiche "valeur min" dans une boîte blanche
+              */
+              content={({ payload }) => {
+                if (!payload || !payload.length) return null; // pas de données → rien
+                const p0 = payload[0]?.payload;
+                if (p0 && p0.__ghost) return null; // pas de tooltip sur les points fantômes
+                const value = payload[0]?.value; // valeur de sessionLength
+                return (
+                  <div style={{ background: '#fff', border: 'none', padding: '4px 6px' }}>
+                    <span style={{ 
+                      width: 39, 
+                      height: 25, 
+                      fontWeight: 500, 
+                      fontSize: 8, 
+                      color: '#000', 
+                      textAlign: 'center', 
+                      display: 'inline-block' 
+                      }}
+                    >
+                      {value} min
+                    </span>
+                  </div>
+                );
+              }}
+            />
+
+            <Line
+              type="natural" // trace une ligne lissée (courbe naturelle).
+              stroke="url(#colorUv)" // applique mon dégradé défini dans <defs> (id="colorUv").
+              dataKey="sessionLength" // chaque point prend la valeur sessionLength de ton dataset.
+              strokeWidth={2} // épaisseur de la ligne 
+              dot={false}
+              
+              /**
+              * Point actif (activeDot) :
+              * - Cas 1 : si point fantôme (__ghost) → aucun dot
+              * - Cas 2 : si point réel → affiche un cercle blanc avec effet glow
+              */
+              activeDot={({ cx, cy, payload }) => {
+                if (payload && payload.__ghost) return null;  // pas de dot pour les points fantômes
+                return (
+                  <circle
+                    cx={cx}
+                    cy={cy}
+                    r={4} // taille du point
+                    fill="#fff" // couleur de remplissage
+                    stroke="#fff" // contour 
+                    strokeWidth={2} // épaisseur du contour
+                    filter='url(#glow)' // // applique de mon filtre glow défini dans <defs>
+                  />
+                );
+              }}
+            />
+          </LineChart>
+        </ResponsiveContainer>
+      </div>
 
     </div>
   );
